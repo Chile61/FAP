@@ -1,0 +1,81 @@
+<!--
+  Generated template for the Confirmuserdetails page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar [color]="headerColor">
+    <ion-title>Confirm your details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="pharma">
+    <h2>{{pharma.PharmacyName}}</h2>
+  <p></p>
+  <p>Open Hours {{pharma.OpenHours}}</p>
+      <ion-row>
+      <ion-col width-10>
+        <ion-icon [name]="pharma.DeliverStatus === 1 ? 'checkmark': 'close'" 
+        [style.color]="pharma.DeliverStatus === 1 ? 'yellowgreen': 'red'"></ion-icon>
+
+      </ion-col>
+      <ion-col>
+        <p style="font-weight: bolder" 
+        [style.color]="pharma.DeliverStatus === 1 ? 'yellowgreen': 'red'">
+          {{pharma.DeliverStatus === 1 ? 'Delivers': 'Wont Deliver'}}
+        </p>
+
+      </ion-col>
+      
+    </ion-row>
+  </div>
+  <!--<h2>My info</h2>
+  
+  <ion-item>
+    <ion-label>Phone number here</ion-label>
+  </ion-item>-->
+  <h4>Delivery to</h4>
+  <ion-item>
+    <ion-label>Choose address</ion-label>
+    <ion-select *ngIf="selectedAddress" [(ngModel)]="selectedAddress.AddressID">
+        <ion-option *ngFor="let address of addresses" value="{{address.AddressID}}">{{address.Address}} , {{address.ZipCode}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <h4>Insurance</h4>
+  <ion-item>
+    <ion-label>Choose your insurance</ion-label>
+    <ion-select *ngIf="selectedInsurance" [(ngModel)]="selectedInsurance.CustomerInsuranceID">
+        <ion-option *ngFor="let ins of insurances" value="{{ins.CustomerInsuranceID}}">{{ins.InsuranceNo}}, {{ins.INSURANCE_CO_NAME}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>For my child</ion-label>
+    <ion-checkbox [(ngModel)]="isChild" (ionChange)="onIsChildChecked()"></ion-checkbox>
+  </ion-item>
+
+  <ion-item *ngIf="isChild">
+    <ion-label>Choose a child</ion-label>
+    <ion-select *ngIf="selectedChild" [(ngModel)]="selectedChild.RelationID">
+        <ion-option *ngFor="let child of children" value="{{child.RelationID}}">{{child.RelationFirstName}} {{child.RelationLastName}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <button ion-button block (click)="onRequestPrice()">
+    Request Price Quote
+  </button>
+
+  <div *ngIf="images">
+    Uploading prescription image {{counter}} of {{images.length}}
+
+    
+  </div>
+  
+  
+</ion-content>

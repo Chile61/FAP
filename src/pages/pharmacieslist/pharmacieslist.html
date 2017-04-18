@@ -1,0 +1,65 @@
+<!--
+  Generated template for the Pharmacieslist page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar [color]="'primary'">
+    <ion-title>Choose a pharmacy</ion-title>
+    <!--<ion-buttons right>
+      <button ion-button icon-only (click)="showOptions()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>-->
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngFor="let pharma of pharmacies">
+    <ion-item hidden></ion-item>
+    
+    <ion-item style="background-color: white; margin-bottom: 0.5em;"
+    (click)="onItemClick(pharma)">
+      
+      <h2>{{pharma.PharmacyName}}</h2>
+      <p>Open Hours {{pharma.OpenHours}}</p>
+      <ion-row>
+      <ion-col width-10>
+        <ion-icon [name]="pharma.DeliverStatus === 1 ? 'checkmark': 'close'" 
+        [style.color]="pharma.DeliverStatus === 1 ? 'yellowgreen': 'red'"></ion-icon>
+
+      </ion-col>
+      <ion-col>
+        <p style="font-weight: bolder" 
+        [style.color]="pharma.DeliverStatus === 1 ? 'yellowgreen': 'red'">
+          {{pharma.DeliverStatus === 1 ? 'Delivers': 'Wont Deliver'}}
+        </p>
+
+      </ion-col>
+      
+    </ion-row>
+    </ion-item>
+    <div></div>
+    <!--<ion-item style="background-color: white; margin-bottom: 0.5em;"
+    (click)="onItemClick()">
+      
+      <h2>Honest Burgers</h2>
+      <p>Open Until 8pm</p>
+      <ion-row>
+      <ion-col width-10>
+        <ion-icon name="checkmark" [ngStyle]="{'color': 'yellowgreen'}"></ion-icon>
+
+      </ion-col>
+      <ion-col>
+        <p style="color: yellowgreen; font-weight: bolder">Delivers</p>
+      </ion-col>
+      
+    </ion-row>
+    </ion-item>-->
+    
+  </ion-list>
+</ion-content>

@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-navbar [color]="headerColor">
+    <ion-title>Request Sent</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding text-center>
+    <ion-icon color="secondary" name="checkmark-circle"></ion-icon>
+<h3>
+    Your request has been sent. {{name}} shall get back to you with Price Quotation soon.
+</h3>
+
+<button ion-button (click)="goHome()">Home</button>
+
+</ion-content>

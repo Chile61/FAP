@@ -1,0 +1,22 @@
+page-home {
+    .menuStyle {
+        height: 15em;
+    }
+
+    .profilePicStyle {
+        font-size: 10em;
+        height: 0;
+    }
+    
+    ion-content ion-list button div.inner-item{
+         margin-left: 0;
+    }
+    
+    .item-md ion-icon[item-left] + .item-inner, .item-md ion-icon[item-left] + .item-input {
+        margin-left: 0;
+    }
+
+    .item-ios ion-icon[item-left], .item-ios ion-icon[item-right] {
+        margin-right: 0;
+    }
+}

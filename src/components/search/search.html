@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+      
+ 
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="dismiss()">Close</button>
+    </ion-buttons>    
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+    <ion-searchbar #searchBar [(ngModel)]="searchTerm" autofocus
+      [formControl]="searchControl"></ion-searchbar>
+    
+    <div *ngIf="searching" class="spinner-container">
+        <ion-spinner></ion-spinner>
+    </div>
+ 
+    <ion-list>
+        <ion-item text-wrap *ngFor="let item of items" (click)="onItemClick(item)">
+            {{item[labelField]}}
+        </ion-item>
+    </ion-list>
+ 
+</ion-content>

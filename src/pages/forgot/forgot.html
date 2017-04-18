@@ -1,0 +1,50 @@
+<!--
+  Generated template for the Forgot page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar [color]="'primary'">
+    <!--<ion-buttons left>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>-->
+    <ion-title>Forgot password?</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="vertical-align-content">
+  <ion-col>
+    <div style="text-align: center; margin-top: 2em;">
+          <h5>I am a</h5>
+        </div>
+    <ion-list item-right radio-group [(ngModel)]="selectedType">
+          <ion-item hidden></ion-item>
+          <ion-item *ngFor="let type of types">
+            <ion-label>{{type.CustomerType}}</ion-label>
+            <ion-radio [value]="type.CustomerTypeID"></ion-radio>
+          </ion-item>
+         <ion-item hidden></ion-item>
+        </ion-list>
+
+    
+    <ion-list>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item hidden></ion-item>
+    
+  </ion-list>
+
+  <div padding>
+    <button ion-button color="primary" block (click)="sendPassword()">Send Password</button>
+  </div>
+  </ion-col>
+</ion-content>

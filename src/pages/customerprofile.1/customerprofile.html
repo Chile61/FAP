@@ -1,0 +1,223 @@
+<!--
+  Generated template for the Customerprofile page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar [color]="'primary'">
+      <button ion-button menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+      </button>
+      <ion-title>
+        My Profile
+      </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item-group>
+    <ion-item-divider>
+      <button ion-item detail-none color="light" (click)="toggleMyInfo()">
+        My Info
+        <ion-icon item-right ios="ios-{{hideMyInfo === true ? 'arrow-down' : 'arrow-up'}}"
+          md="ios-{{hideMyInfo === true ? 'arrow-down' : 'arrow-up'}}"></ion-icon>
+      </button>
+    </ion-item-divider>
+    <ion-list [hidden]="hideMyInfo">
+      <ion-item hidden></ion-item>
+      <ion-item>
+          <ion-label floating>{{primary}}</ion-label>
+          <ion-input type="text" [(ngModel)]="user.primary"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+          <ion-label floating>{{secondary}}</ion-label>
+          <ion-input type="text" [(ngModel)]="user.secondary"></ion-input>
+      </ion-item>
+
+      <div style="height: 1.7em"></div>
+
+      <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-select [(ngModel)]="user.gender">
+          <ion-option value="f" selected="true">Female</ion-option>
+          <ion-option value="m">Male</ion-option>
+        </ion-select>
+      </ion-item>
+      
+      <div style="height: 1.7em"></div>
+
+      <ion-item>
+        <ion-label>Date Of Birth</ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="user.dob"></ion-datetime>
+        
+      </ion-item>
+      
+      <!--<ion-item>
+        <ion-label floating>Address</ion-label>
+        <ion-input type="text" [(ngModel)]="user.address1"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>ZIP Code</ion-label>
+        <ion-input type="number" [(ngModel)]="user.zipCode"></ion-input>
+      </ion-item>-->
+
+      <ion-item hidden></ion-item>
+    </ion-list>
+
+  <ion-item-divider>
+      <button ion-item detail-none color="light" (click)="toggleMyDocInfo()">
+        My Doctor Info
+        <ion-icon item-right ios="ios-{{hideMyDocInfo === true ? 'arrow-down' : 'arrow-up'}}"
+          md="ios-{{hideMyDocInfo === true ? 'arrow-down' : 'arrow-up'}}"></ion-icon>
+        </button>
+  </ion-item-divider>   
+      <ion-list [hidden]="hideMyDocInfo">
+        <ion-item>
+          <ion-label floating>Doctor Name</ion-label>
+          <ion-input type="text" [(ngModel)]="user.primary"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label floating>Address</ion-label>
+          <ion-input type="text" [(ngModel)]="user.address1"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>ZIP Code</ion-label>
+          <ion-input type="number" [(ngModel)]="user.zipCode"></ion-input>
+        </ion-item>
+
+        <ion-item hidden></ion-item>
+      </ion-list>
+  
+
+  <ion-item-divider>
+      <button ion-item detail-none color="light" (click)="toggleAddresses()">
+        My Delivery Address
+        <ion-icon item-right ios="ios-{{hideAddresses === true ? 'arrow-down' : 'arrow-up'}}"
+          md="ios-{{hideAddresses === true ? 'arrow-down' : 'arrow-up'}}"></ion-icon>
+        </button>
+       </ion-item-divider>
+      <ion-list [hidden]="hideAddresses">
+       <!--<button padding ion-button>
+         Add New Address
+       </button>-->
+        <ion-item>
+          <ion-label floating>Address</ion-label>
+          <ion-input type="text" [(ngModel)]="user.address1"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>ZIP Code</ion-label>
+          <ion-input type="number" [(ngModel)]="user.zipCode"></ion-input>
+        </ion-item>
+         <!--<div>
+           <button ion-item detail-none>
+           123, Christie Street, 12445
+           <ion-icon item-right ios="ios-arrow-forward"
+            md="ios-arrow-forward"></ion-icon>
+          </button>
+          <button ion-item detail-none>
+            Address 2
+            <ion-icon item-right ios="ios-arrow-forward"
+            md="ios-arrow-forward"></ion-icon>
+          </button>
+         </div>-->
+
+        <ion-item hidden></ion-item>
+
+        
+      </ion-list>
+
+      <ion-item-divider>
+      <button ion-item detail-none color="light" (click)="toggleInsurance()">
+        My Insurance
+        <ion-icon item-right ios="ios-{{hideInsurance === true ? 'arrow-down' : 'arrow-up'}}"
+          md="ios-{{hideInsurance === true ? 'arrow-down' : 'arrow-up'}}"></ion-icon>
+        </button>
+       </ion-item-divider>
+
+       <ion-list [hidden]="hideInsurance">
+         <ion-item>
+          <ion-label floating>Company Name</ion-label>
+          <ion-input type="text"></ion-input>
+         </ion-item>
+      
+        <ion-item>
+            <ion-label floating>Policy Number</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item hidden></ion-item>
+       </ion-list>
+
+      <ion-item-divider>
+      <button ion-item detail-none color="light" (click)="toggleHistory()">
+        My Medical History
+        <ion-icon item-right ios="ios-{{hideHistory === true ? 'arrow-down' : 'arrow-up'}}"
+          md="ios-{{hideHistory === true ? 'arrow-down' : 'arrow-up'}}"></ion-icon>
+        </button>
+       </ion-item-divider>
+       <ion-list [hidden]="hideHistory">
+         
+          <ion-item>
+            <ion-textarea placeholder="Mention about your allergies and other medications, if any..."></ion-textarea>
+          </ion-item>
+          <ion-item hidden></ion-item>
+       </ion-list>
+
+      <ion-item-divider>
+      <button ion-item detail-none color="light" (click)="toggleChild()">
+        My Child Info
+        <ion-icon item-right ios="ios-{{hideChild === true ? 'arrow-down' : 'arrow-up'}}"
+          md="ios-{{hideChild === true ? 'arrow-down' : 'arrow-up'}}"></ion-icon>
+        </button>
+       </ion-item-divider>
+       <ion-list [hidden]="hideChild">
+         <ion-item hidden></ion-item>
+      <ion-item>
+          <ion-label floating>First Name</ion-label>
+          <ion-input type="text"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+          <ion-label floating>Last Name</ion-label>
+          <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <div style="height: 1.7em"></div>
+
+      <ion-item>
+        <ion-label>Gender</ion-label>
+        <!--<ion-select [(ngModel)]="user.gender">-->
+        <ion-select>
+          <ion-option value="f" selected="false">Female</ion-option>
+          <ion-option value="m" selected="true">Male</ion-option>
+        </ion-select>
+      </ion-item>
+      
+      <div style="height: 1.7em"></div>
+
+      <ion-item>
+        <ion-label>Date Of Birth</ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="user.dob"></ion-datetime>
+      </ion-item>
+
+      <div style="height: 1.7em"></div>
+      <ion-item>
+        <ion-textarea placeholder="Mention about your child's allergies and other medications, if any..."></ion-textarea>
+      </ion-item>
+
+      <ion-item hidden></ion-item>
+    </ion-list>
+
+  </ion-item-group>
+  
+
+  <div padding>
+    <button ion-button color="primary" block (click)="save()">Save</button>
+  </div>
+</ion-content>

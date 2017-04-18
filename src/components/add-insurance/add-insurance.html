@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-navbar [color]="'primary'">
+    <ion-title>
+      Enter your insurance details
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Cancel
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <ion-item hidden></ion-item>
+    <button ion-button icon-left (click)="showInsurances()">
+          Choose Your Insurance
+          
+        </button>
+        <label class="compStyle" *ngIf="selectedCompany">{{selectedCompany.NAME}}</label>
+    <!--<ion-row>
+      <label class="compStyle" *ngIf="selectedCompany">{{selectedCompany.NAME}}</label>
+      <button ion-button icon-left (click)="showInsurances()">
+          Choose Your Insurance
+          
+        </button>
+    </ion-row>-->
+    
+    <!--<ion-item>
+          <ion-label floating>Company Name</ion-label>
+          <ion-input *ngIf="selectedCompany" type="text" [(ngModel)]="selectedCompany.NAME"></ion-input>
+       </ion-item>-->
+    <!--<ion-row>
+      <ion-col width-90>
+        <ion-item>
+          <ion-label floating>Company Name</ion-label>
+          <ion-input *ngIf="selectedCompany" type="text" [(ngModel)]="selectedCompany.NAME"></ion-input>
+       </ion-item>
+    
+      </ion-col>
+      <ion-col width-10>
+        <button padding-vertical ion-button icon-left (click)="showInsurances()">
+          Choose
+          
+        </button>
+      </ion-col>
+    </ion-row>-->
+    <ion-item>
+      <ion-label floating>Insurance Number</ion-label>
+      <ion-input type="text" [(ngModel)]="insuranceNumber"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="insuranceNumber">
+      <ion-buttons>
+      <button ion-button icon-left (click)="presentActionSheet(true)">
+        <ion-icon name="camera"></ion-icon>Front Image
+      </button>
+      <button ion-button icon-left (click)="presentActionSheet(false)">
+        <ion-icon name="camera"></ion-icon>Back Image
+      </button>
+      <!--<button ion-button icon-left (click)="uploadImage2()" [disabled]="lastImage === null">
+        <ion-icon name="cloud-upload"></ion-icon>Upload
+      </button>-->
+    </ion-buttons>
+      
+        
+    </ion-item>
+     <ion-scroll scrollX="true" style="height: 9em;"  *ngIf="insuranceNumber">
+    <ion-row>
+            <div *ngIf="front" style="padding-right: 0.5em; width: 5em; height: 10em">
+               <button ion-button [color]="'danger'" icon-only text-right (click)="removeImage('front',front)">
+                 <ion-icon name="trash"></ion-icon>
+               </button>
+               <img 
+              [src]="front.location + '/' + front.fileName"
+              (click)="zoomImage(front)">
+            </div>
+            
+             <div *ngIf="back" style="padding-right: 0.5em; width: 5em; height: 10em">
+               <button ion-button [color]="'danger'" icon-only text-right (click)="removeImage('back',back)">
+                 <ion-icon name="trash"></ion-icon>
+               </button>
+               <img 
+              [src]="back.location + '/' + back.fileName"
+              (click)="zoomImage(back)">
+            </div>
+      </ion-row>
+    
+ </ion-scroll>
+    <!--<ion-item>
+      <img *ngIf="front" [src]="front.location + '/' + front.fileName">
+       
+    </ion-item>
+    <ion-item>
+      <img *ngIf="back" [src]="back.location + '/' + back.fileName">
+       
+    </ion-item>-->
+
+    
+    <ion-item hidden></ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button block (click)="addEdit()">{{addEditLabel}}</button>
+  </div>
+</ion-content>
